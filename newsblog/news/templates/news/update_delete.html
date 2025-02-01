@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Обновление{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>Обновление статьи</h1>
+    <div class="add-news">
+        {% if error %}
+            <div class="alert alert-warning add-news-warning vibration">{{ error }}</div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}<br>
+            {{ form.title }}<br>
+            {{ form.anons }}<br>
+            {{ form.ful_text }}<br>
+            <div class="add-news-date">
+                {{ form.date }}
+                <button type="submit" name="action" value="update" class="btn btn-success">Обновить статью</button>
+                <button type="submit" name="action" value="delete" class="btn btn-danger">Удалить статью</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

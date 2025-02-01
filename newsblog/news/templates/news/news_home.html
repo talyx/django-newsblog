@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>Новости на сайте</h1>
+    <div class="news-box">
+        {% if news %}
+        {% for el in news %}
+
+        <div class="alert alert-warning news-card">
+            <h3>{{ el.title }}</h3>
+            <p>{{ el.anons }}</p>
+            <div class="news-card-btn">
+                <a href="{% url 'news-detail' el.id %}" class="btn btn-success">Читать статью</a>
+                <a href="{% url 'news-update' el.id %}" class="btn btn-warning">Обновить статью</a>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <p>На данный момент на сайте нету записей. Ждите обновлений.</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
